@@ -7,7 +7,7 @@ export default Blits.Component('Colage', {
   },
   template: `
     <Element w="1920" h="1080">
-    	<ImageTile :for="(image, index) in $images" :src="$image.src" :x="$image.x" :y="$image.y" />
+    	<ImageTile w= "400" h="216" :for="(image, index) in $images" :src="$image.src" :x="$image.x" :y="$image.y" />
     </Element>
   `,
   state() {
