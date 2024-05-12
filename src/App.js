@@ -10,7 +10,7 @@ export default Blits.Application({
     </Element>
   `,
   routes: [
-    { path: '/', component: Colage },
-    // { path: 'colage', component: Colage }, this route cannot be triggered I dont know why
+    { path: '/', component: Home },
+    { path: '/colage', component: Colage }, // this route cannot be triggered I dont know why
   ],
 })

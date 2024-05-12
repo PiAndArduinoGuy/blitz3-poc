@@ -22,5 +22,10 @@ Blits.Launch(App, 'app', {
       type: 'web',
       file: 'fonts/OpenSans-Medium.ttf',
     },
+    {
+      family: 'Careny',
+      type: 'msdf',
+      file: 'fonts/Careny.ttf',
+    },
   ],
 })

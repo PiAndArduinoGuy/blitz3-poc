@@ -7,7 +7,7 @@ export default Blits.Component('Colage', {
   },
   template: `
     <Element w="1920" h="1080">
-    	<ImageTile w= "400" h="216" :for="(image, index) in $images" :src="$image.src" :x="$image.x" :y="$image.y" />
+    	<ImageTile w= "400" h="300" :for="(image, index) in $images" :src="$image.src" :x="$image.x" :y="$image.y" />
     </Element>
   `,
   state() {
@@ -17,12 +17,14 @@ export default Blits.Component('Colage', {
         { src: 'images/IMG_4251.JPEG', x: 400, y: 0 },
         { src: 'images/IMG_4234.JPEG', x: 800, y: 0 },
         { src: 'images/IMG_4212.JPG', x: 1200, y: 0 },
-        { src: 'images/IMG_4089.JPEG', x: 1600, y: 0 },
-        { src: 'images/IMG_4019.JPEG', x: 0, y: 216 },
-        { src: 'images/IMG_3552.JPG', x: 400, y: 216 },
-        { src: 'images/IMG_1049.JPG', x: 800, y: 216 },
-        { src: 'images/IMG_1021.JPG', x: 1200, y: 216 },
-        { src: 'images/IMG_0158.JPG', x: 1600, y: 216 },
+        { src: 'images/IMG_4089.JPEG', x: 0, y: 300 },
+        { src: 'images/IMG_40x19.JPEG', x: 400, y: 300 },
+        { src: 'images/IMG_3552.JPG', x: 800, y: 300 },
+        { src: 'images/IMG_1049.JPG', x: 1200, y: 300 },
+        { src: 'images/IMG_1021.JPG', x: 0, y: 600 },
+        { src: 'images/IMG_0158.JPG', x: 400, y: 600 },
+        { src: 'images/IMG_4550.JPEG', x: 800, y: 600 },
+        { src: 'images/IMG-5771.jpg', x: 1200, y: 600 },
       ],
     }
   },
