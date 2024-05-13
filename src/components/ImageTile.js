@@ -41,5 +41,19 @@ export default Blits.Component('ImageTile', {
         this.offset = 0 // remove the offset that placed items off screen
       }, 1000) // after 1 second
     },
+    animateAway() {
+      this.$setTimeout(() => {
+        this.wait = this.delay
+        this.duration = 5000
+        this.offset = this.direction === 'up' ? 1080 : -1080 // offset tile to move it off screen
+      }, 1000) // after 1 second
+    },
+  },
+
+  watch: {
+    src(newSrc) {
+      console.log('New source', newSrc)
+      this.animateAway()
+    },
   },
 })
