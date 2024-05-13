@@ -22,28 +22,29 @@ export default Blits.Component('Colage', {
   `,
   state() {
     return {
-      imageOne: 'images/IMG_4349.JPEG',
-      imageTwo: 'images/IMG_4251.JPEG',
-      imageThree: 'images/IMG_4234.JPEG',
-      imageFour: 'images/IMG_4212.JPG',
-      imageFive: 'images/IMG_4089.JPEG',
-      imageSix: 'images/IMG_4019.JPEG',
-      imageSeven: 'images/IMG_3552.JPG',
-      imageEight: 'images/IMG_1049.JPG',
-      imageNine: 'images/IMG_1021.JPG',
-      imageTen: 'images/IMG_0158.JPG',
+      imageOne: '',
+      imageTwo: '',
+      imageThree: '',
+      imageFour: '',
+      imageFive: '',
+      imageSix: '',
+      imageSeven: '',
+      imageEight: '',
+      imageNine: '',
+      imageTen: '',
       offset: -1080,
       animationType: 'animateIn',
     }
   },
   hooks: {
     ready() {
-      this.animate()
+      this.updateImages()
+      this.animateIn()
     },
   },
 
   methods: {
-    animate() {
+    animateIn() {
       this.wait = this.delay
       this.duration = 5000
       this.offset = 0 // remove the offset that placed items off screen
@@ -77,7 +78,7 @@ export default Blits.Component('Colage', {
         }, 15000)
       } else {
         this.updateImages()
-        this.animate()
+        this.animateIn()
       }
     },
   },
