@@ -7,16 +7,16 @@ export default Blits.Component('Colage', {
   },
   template: `
     <Element w="1920" h="1080">
-    	<ImageTile w= "400" h="300" :src="$imageTen" delay="1000" direction="up" />
-      <ImageTile w= "400" h="300" x="400" y="0" :src="$imageOne" delay="1000" />
-      <ImageTile w= "400" h="300" x="800" y="0" :src="$imageTwo" delay="2000" direction="up" />
-      <ImageTile w= "400" h="300" x="1200" y="0" :src="$imageThree" delay="3000" />
-      <ImageTile w= "400" h="300" x="0" y="300" :src="$imageFour" delay="4000" direction="up" />
-      <ImageTile w= "400" h="300" x="400" y="300" :src="$imageFive" delay="5000"  />
-      <ImageTile w= "400" h="300" x="800" y="300" :src="$imageSix" delay="6000" direction="up" />
-      <ImageTile w= "400" h="300" x="1200" y="300" :src="$imageSeven" delay="7000" />
-      <ImageTile w= "400" h="300" x="0" y="600" :src="$imageEight" delay="8000" direction="up" />
-      <ImageTile w= "400" h="300" x="400" y="600" :src="$imageNine" delay="9000" />
+    	<ImageTile w= "400" h="300" :src="$imageTen" :y.transition="{value: $offset, duration: $duration, delay: 1000}" />
+      <ImageTile w= "400" h="300" x="400" :y.transition="{value: $offset, duration: $duration, delay: 2000}" :src="$imageOne" />
+      <ImageTile w= "400" h="300" x="800" :y.transition="{value: $offset, duration: $duration, delay: 3000}" :src="$imageTwo" direction="up" />
+      <ImageTile w= "400" h="300" x="1200" :y.transition="{value: $offset, duration: $duration, delay: 4000}" :src="$imageThree"  />
+      <ImageTile w= "400" h="300" x="0" :y.transition="{value: 300 + $offset, duration: $duration, delay: 5000}" :src="$imageFour"  direction="up" />
+      <ImageTile w= "400" h="300" x="400" :y.transition="{value: 300 + $offset, duration: $duration, delay: 6000}" :src="$imageFive" delay="5000"  />
+      <ImageTile w= "400" h="300" x="800" :y.transition="{value: 300 + $offset, duration: $duration, delay: 7000}" :src="$imageSix" delay="6000" direction="up" />
+      <ImageTile w= "400" h="300" x="1200" :y.transition="{value: 300 + $offset, duration: $duration, delay: 8000}" :src="$imageSeven" delay="7000" />
+      <ImageTile w= "400" h="300" x="0" :y.transition="{value: 600 + $offset, duration: $duration, delay: 9000}" :src="$imageEight" delay="8000" direction="up" />
+      <ImageTile w= "400" h="300" x="400" :y.transition="{value: 600 + $offset, duration: $duration, delay: 10000, end: $lastItemTransitioned}" :src="$imageNine" delay="9000" />
     </Element>
   `,
   state() {
@@ -31,18 +31,29 @@ export default Blits.Component('Colage', {
       imageEight: 'images/IMG_1049.JPG',
       imageNine: 'images/IMG_1021.JPG',
       imageTen: 'images/IMG_0158.JPG',
+      offset: -1080,
+      animationType: 'animateIn',
     }
   },
   hooks: {
     ready() {
-      this.$setTimeout(() => {
-        console.log('Performing image tile updates')
-        this.updateImages()
-      }, 15000)
+      this.animate()
     },
   },
 
   methods: {
+    animate() {
+      this.wait = this.delay
+      this.duration = 5000
+      this.offset = 0 // remove the offset that placed items off screen
+      this.animationType = 'animateIn'
+    },
+    animateAway() {
+      this.wait = this.delay
+      this.duration = 5000
+      this.offset = 1080
+      this.animationType = 'animateAway'
+    },
     updateImages() {
       this.imageOne = 'images/IMG-7435.jpg'
       this.imageTwo = 'images/scenic-1.jpg'
@@ -54,6 +65,16 @@ export default Blits.Component('Colage', {
       this.imageEight = 'images/scenic-7.jpg'
       this.imageNine = 'images/scenic-8.jpg'
       this.imageTen = 'images/scenic-9.jpg'
+    },
+
+    lastItemTransitioned() {
+      console.log('Last item transitioned')
+      if (this.animationType === 'animateIn') {
+        this.animateAway()
+      } else {
+        this.updateImages()
+        this.animate()
+      }
     },
   },
 })
