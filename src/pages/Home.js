@@ -14,9 +14,7 @@ export default Blits.Component('Home', {
 		<Text content="The app that displays your beloved photos in your style of colage ! Select your style of colage to get started" font="Careny" size="30" x="960" y="580" mount="0.5:"/>
 		<Element w="400" h="100" x="960" y="650" mount="0.5">
 			<Button w="200" h="50" displayText="Tiles" ref="0" />
-			<Button w="200" h="50" displayText="Odd Sized" ref="1"  x="210"/>
-			<Button w="200" h="50" displayText="Slideshow" ref="2" y="60" />
-			<Button w="200" h="50" displayText="Overlay" ref="3"  x="210" y="60" />
+			<Button w="200" h="50" displayText="Slideshow" ref="1" x="210" />
 		</Element>
 		
     </Element>
@@ -35,14 +33,8 @@ export default Blits.Component('Home', {
     right() {
       this.buttonIndex = 1
     },
-    down() {
-      this.buttonIndex = 2
-    },
-    up() {
-      this.buttonIndex = 0
-    },
     left() {
-      this.buttonIndex = 3
+      this.buttonIndex = 0
     },
     enter() {
       switch (this.buttonIndex) {
@@ -50,17 +42,10 @@ export default Blits.Component('Home', {
           this.$router.to('/Colage')
           break
         case 1:
-          break
-        case 2:
           this.$router.to('/slide-show')
-          break
-        case 3:
           break
       }
     },
-  },
-  methods: {
-    focusButton() {},
   },
   watch: {
     buttonIndex(value) {
