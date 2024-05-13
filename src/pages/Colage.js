@@ -17,7 +17,10 @@ export default Blits.Component('Colage', {
       <ImageTile w= "400" h="300" x="800" :y.transition="{value: 300 + $offset, duration: $duration, delay: 7000}" :src="$imageSix" delay="6000" direction="up" />
       <ImageTile w= "400" h="300" x="1200" :y.transition="{value: 300 + $offset, duration: $duration, delay: 8000}" :src="$imageSeven" delay="7000" />
       <ImageTile w= "400" h="300" x="0" :y.transition="{value: 600 + $offset, duration: $duration, delay: 9000}" :src="$imageEight" delay="8000" direction="up" />
-      <ImageTile w= "400" h="300" x="400" :y.transition="{value: 600 + $offset, duration: $duration, delay: 10000, end: $lastItemTransitioned}" :src="$imageNine" delay="9000" />
+      <ImageTile w= "400" h="300" x="400" :y.transition="{value: 600 + $offset, duration: $duration, delay: 10000}" :src="$imageNine" delay="9000" />
+      <ImageTile w= "400" h="300" x="800" :y.transition="{value: 600 + $offset, duration: $duration, delay: 11000}" :src="$imageNine" delay="9000" />
+      <ImageTile w= "400" h="300" x="1200" :y.transition="{value: 600 + $offset, duration: $duration, delay: 12000, end: $lastItemTransitioned}" :src="$imageNine" delay="9000" />
+
     </Element>
   `,
   state() {
@@ -32,6 +35,8 @@ export default Blits.Component('Colage', {
       imageEight: '',
       imageNine: '',
       imageTen: '',
+      imageEleven: '',
+      imageTwelve: '',
       offset: -1080,
       animationType: 'animateIn',
     }
@@ -57,7 +62,7 @@ export default Blits.Component('Colage', {
       this.animationType = 'animateAway'
     },
     updateImages() {
-      const nextImages = getNextImages(10)
+      const nextImages = getNextImages(12)
       this.imageOne = nextImages[0]
       this.imageTwo = nextImages[1]
       this.imageThree = nextImages[2]
@@ -68,6 +73,8 @@ export default Blits.Component('Colage', {
       this.imageEight = nextImages[7]
       this.imageNine = nextImages[8]
       this.imageTen = nextImages[9]
+      this.imageEleven = nextImages[10]
+      this.imageTwelve = nextImages[11]
     },
 
     lastItemTransitioned() {
