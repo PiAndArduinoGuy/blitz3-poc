@@ -52,6 +52,7 @@ export default Blits.Component('Home', {
         case 1:
           break
         case 2:
+          this.$router.to('/slide-show')
           break
         case 3:
           break
