@@ -1,5 +1,6 @@
 import Blits from '@lightningjs/blits'
 import ImageTile from '../components/ImageTile'
+import { getNextImages } from '../api/imageApi'
 
 export default Blits.Component('Colage', {
   components: {
@@ -55,22 +56,25 @@ export default Blits.Component('Colage', {
       this.animationType = 'animateAway'
     },
     updateImages() {
-      this.imageOne = 'images/IMG-7435.jpg'
-      this.imageTwo = 'images/scenic-1.jpg'
-      this.imageThree = 'images/scenic-2.jpg'
-      this.imageFour = 'images/scenic-3.jpg'
-      this.imageFive = 'images/scenic-4.jpg'
-      this.imageSix = 'images/scenic-5.jpg'
-      this.imageSeven = 'images/scenic-6.jpg'
-      this.imageEight = 'images/scenic-7.jpg'
-      this.imageNine = 'images/scenic-8.jpg'
-      this.imageTen = 'images/scenic-9.jpg'
+      const nextImages = getNextImages(10)
+      this.imageOne = nextImages[0]
+      this.imageTwo = nextImages[1]
+      this.imageThree = nextImages[2]
+      this.imageFour = nextImages[3]
+      this.imageFive = nextImages[4]
+      this.imageSix = nextImages[5]
+      this.imageSeven = nextImages[6]
+      this.imageEight = nextImages[7]
+      this.imageNine = nextImages[8]
+      this.imageTen = nextImages[9]
     },
 
     lastItemTransitioned() {
       console.log('Last item transitioned')
       if (this.animationType === 'animateIn') {
-        this.animateAway()
+        this.$setTimeout(() => {
+          this.animateAway()
+        }, 15000)
       } else {
         this.updateImages()
         this.animate()
