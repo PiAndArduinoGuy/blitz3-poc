@@ -8,6 +8,7 @@ export default Blits.Application({
   template: `
     <Element>
     	<RouterView />
+      <!-- Add settings here -->
     </Element>
   `,
   routes: [
